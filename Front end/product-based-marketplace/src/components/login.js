@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState} from "react";
 import { useHistory } from "react-router";
+import {Context} from './StoreUser';
 
 function Login()
 {
@@ -9,6 +10,8 @@ function Login()
     const [error, setError] = useState();
     const [emailerror, setEmailError] = useState();
     const [passerror, setPassError] = useState();
+    
+    const [state,setState]=useContext(Context);
 
     const history = useHistory();
 
@@ -52,9 +55,12 @@ function Login()
 
     
             var obj = JSON.parse(person);
+            console.log(obj);
+
 
             if(obj.type==='admin'){
-                history.push("/admin/index")
+                history.push(`/admin/index/${obj.id}`);
+                setState(obj);
             }
             else if(obj.type==='buyer'){
                 history.push("/buyer/index")
@@ -73,6 +79,7 @@ function Login()
                 //console.log(error1.stringify);
                 setEmailError(error1.email);
                 setPassError(error1.password);
+
 
             }
     }
