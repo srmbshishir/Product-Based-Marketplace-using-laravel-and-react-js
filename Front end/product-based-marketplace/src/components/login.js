@@ -6,10 +6,15 @@ function Login()
 {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState();
+    const [emailerror, setEmailError] = useState();
+    const [passerror, setPassError] = useState();
+
     const history = useHistory();
 
 
     async function login(){
+        setError("");
         console.warn(email,password);
         //console.log(errors);
         let item={email,password};
@@ -20,31 +25,57 @@ function Login()
                 "Accept": 'application/json'
             },
             body: JSON.stringify(item)
-        });
-        result = await result.json();
-        localStorage.setItem("user-info",JSON.stringify(result));
-        const person=localStorage.getItem('user-info')
-        JSON.parse(person);
+        })
+        // .catch((e)=>{
+        //     console.log(e.result);
+        // })
 
-        var obj = JSON.parse(person);
-        if(obj.type==='admin'){
-            history.push("/admin/index")
-        }
-        else if(obj.type==='buyer'){
-            history.push("/buyer/index")
-        }
-        else if(obj.type==='seller'){
-            history.push("/seller/index")
-        }
-    }
+        // if(!result.ok){
+        //     console.log("ashsi");
+        //     //throw Error('could not fetch the data for that resource')
+            
+        // }
+
+            result = await result.json();
+            localStorage.setItem("user-info",JSON.stringify(result));
+            const person=localStorage.getItem('user-info')
+            JSON.parse(person);
+            console.log(person);
+
+            //console.log(typeof(person));
+
+            // if(person==="invalid"){
+            //     setError("Username or password is invalid")
+            //     console.log(error);
+            // }
+
+
     
-    // const onsubmit = (e)=>{
-    //     // e.preventDefault();
-    //     // console.log(user);
-    //     // addNewUser(user);
-    //     // history.push('/userlist');
-    //     console.log(user);
-    // }
+            var obj = JSON.parse(person);
+
+            if(obj.type==='admin'){
+                history.push("/admin/index")
+            }
+            else if(obj.type==='buyer'){
+                history.push("/buyer/index")
+            }
+            else if(obj.type==='seller'){
+                history.push("/seller/index")
+            }
+            else if(obj==="invalid username or password"){
+                setError(obj);
+            }
+            else if(obj==="you have been blocked"){
+                setError(obj);
+            }
+            else{
+                let error1=obj.errors  
+                //console.log(error1.stringify);
+                setEmailError(error1.email);
+                setPassError(error1.password);
+
+            }
+    }
     return (
         <div>
             <h1>Login page</h1>
@@ -62,8 +93,16 @@ function Login()
                 className="form-control"/>
                 <br/>
                 <button onClick={login}>Login</button>
+                <br/>
 
-
+                {/* {this.error.map((e)=>{
+                    return e;
+                })} */}
+                {emailerror}
+                <br/>
+                {passerror}
+                <br/>
+                {error}
             </div>
         </div>
     );

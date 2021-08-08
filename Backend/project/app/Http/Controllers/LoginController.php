@@ -43,13 +43,18 @@ class LoginController extends Controller
         else if(DB::table('user')->where('email',$req->email)->where('password', $req->password)->where('status','blocked')->exists()){
             //$req->session()->flash('msg', 'Account Blocked!');
             //return redirect('/login');
-            return "blocked";
+            //return $errors;
+            
+            return json_encode("you have been blocked");
+            
         }
         else{
             //$req->session()->flash('msg', 'Invalid username or password!');
             //return redirect('/login');
-            return "invalid";
+            //return $errors;
+            return json_encode("invalid username or password");
         }
+        return json_encode($errors);
     }
 
 
