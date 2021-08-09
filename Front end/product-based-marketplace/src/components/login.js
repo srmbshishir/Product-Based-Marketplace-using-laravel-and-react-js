@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useState} from "react";
 import { useHistory } from "react-router";
+import auth from './auth';
 import {Context} from './StoreUser';
 
 function Login()
@@ -11,7 +12,10 @@ function Login()
     const [emailerror, setEmailError] = useState();
     const [passerror, setPassError] = useState();
     
-    const [state,setState]=useContext(Context);
+//    const [user,setUser]=useContext(Context);
+    const {user,type}= React.useContext(Context);
+    const [userValue,setUserValue]=user;
+   // const [typeValue,setTypeValue]=type;
 
     const history = useHistory();
 
@@ -59,14 +63,24 @@ function Login()
 
 
             if(obj.type==='admin'){
-                history.push(`/admin/index/${obj.id}`);
-                setState(obj);
+                auth.login(()=>{
+                    setUserValue(obj);
+                    history.push(`/admin/index/${obj.id}`);
+                })
+       
             }
             else if(obj.type==='buyer'){
-                history.push("/buyer/index")
+                auth.login(()=>{
+                    setUserValue(obj);
+                    history.push(`/buyer/index/${obj.id}`);
+                })
             }
             else if(obj.type==='seller'){
-                history.push("/seller/index")
+                auth.login(()=>{
+                    setUserValue(obj);
+                    history.push(`/seller/index/${obj.id}`);
+                })
+
             }
             else if(obj==="invalid username or password"){
                 setError(obj);

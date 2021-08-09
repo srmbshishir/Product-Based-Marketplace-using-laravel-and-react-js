@@ -5,11 +5,22 @@ import React, {useState} from 'react';
 export const Context = React.createContext();
 
 const Store =({children}) =>{
-    const [state,setState]=useState();
+    const [user,setUser]=useState();
+    const [type,setType]=useState();
 
     return(
-        <Context.Provider value={[state,setState]}>{children}</Context.Provider>
+        <Context.Provider value={{user:[user,setUser],type:[type,setType]}}>{children}</Context.Provider>
     );
 };
 
 export default Store;
+
+{/* <GameContext.Provider
+ value={{ name: [name, setName], color: [color, setColor] }}
+   >
+  {props.children}
+</GameContext.Provider>;
+
+const { name, color } = React.useContext(GameContext);
+const [nameValue, setnameValue] = name;
+const [colorValue, setcolorValue] = color; */}
