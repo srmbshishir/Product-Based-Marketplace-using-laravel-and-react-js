@@ -29,7 +29,7 @@ class UserRequest extends FormRequest
             'address'=>'required|max:255',
             'phone'=>'required',
             'type'=>'required',
-            'image'=>'required',
+            // 'image'=>'required',
             'password'=>'required|alpha_num|min:10|max:20|bail',
             'rpass'=>'required|same:password',
         ];
@@ -41,7 +41,7 @@ class UserRequest extends FormRequest
             'address.required'=> 'provide your address.',
             'phone.required' => 'provide your contact number.',
             'type.required'=> 'enter a user type.',
-            'image.required'=> 'please upload a picture',
+            // 'image.required'=> 'please upload a picture',
             'password.required'=> 'minimum 10 characters for password.',
             'rpass.required'=>'confirm password',
             'rpass.same'=>'password must match.',

@@ -125,10 +125,10 @@ class UserController extends Controller
     public function adduser(){
         return view('Admin.add');
     }
-    public function showuser(){
+    public function showUser(){
         $user =new User();
-        $users = $user->orderBy('id','asc')->paginate(5);
-        return view('Admin.userlist')->with('userlist', $users);
+        $users = $user->get();
+        return $users;
     }
     public function usersearch(Request $req)
     {
@@ -206,16 +206,19 @@ class UserController extends Controller
             $user->image = $file->getClientOriginalName();
             $user->save();
             if($file->move('upload', $file->getClientOriginalName())){
-                return redirect()->route('showuser');
-                echo "successfully created account, login with email and password.";
+                // return redirect()->route('showuser');
+                // echo "successfully created account, login with email and password.";
+                return json_encode("User added");
             }
             else{
-                echo "error";
+                return json_encode("error");
             }
         }
         else{
-            echo "file not found.";
+            return json_encode("file not found.");
+            
         }    
+        //return json_encode($errors);
     }
     //ADMIN PROFILE WORK
     public function profileadmin($id){

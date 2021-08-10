@@ -4,6 +4,12 @@ import Navbar from './components/navbar';
 import Login from './components/login';
 
 import Admin from './components/admin';
+import AddUser from './components/admin/AddUser';
+import approveProducts from './components/admin/ApproveProducts';
+import Dashboard from './components/admin/Dashboard';
+import myProfile from './components/admin/MyProfile';
+import ShowUser from './components/admin/ShowUser';
+
 import Buyer from './components/buyer';
 import Seller from './components/seller';
 import Store from './components/StoreUser';
@@ -30,9 +36,14 @@ function App() {
                     </Route>
 
                     <ProtectedRoute exact path='/admin/index/:id' component={Admin} />
-                    {/* <Route exact path='/admin/index/:id'> 
-                    <Admin></Admin>
-                </Route>  */}
+                    <ProtectedRoute exact path='/admin/adduser' component={AddUser} />
+                    <ProtectedRoute exact path='/admin/showuser' component={ShowUser} />
+                    <ProtectedRoute exact path='/admin/approveproducts' component={approveProducts} />
+                    <ProtectedRoute exact path='/admin/myprofile' component={myProfile} />
+                    <ProtectedRoute exact path='/admin/dashboard' component={Dashboard} />
+
+
+
                     <ProtectedRoute exact path='/buyer/index/:id' component={Buyer} />
                     {/* <Route exact path='/buyer/index/:id'> 
                     <Buyer></Buyer>
@@ -41,6 +52,7 @@ function App() {
                     {/* <Route exact path='/seller/index/:id'> 
                     <Seller></Seller>
                 </Route>  */}
+
                 </Switch>
             </Store>
         </Router>

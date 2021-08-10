@@ -23,4 +23,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/','ApiController@api');
 
 Route::post('/login', 'LoginController@verify');
+Route::post('/admin/addUser', 'UserController@insertuser');
+Route::get('/admin/showUser', 'UserController@showUser');
 

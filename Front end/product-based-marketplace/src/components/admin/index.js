@@ -2,16 +2,17 @@ import React, { useContext } from 'react';
 import { Context } from '../StoreUser';
 import { useHistory } from "react-router";
 import auth from '../auth';
+import AdminNavbar from './AdminNavbar';
 
 
 
 const Admin = () => {
-    const {user,type}= React.useContext(Context);
-    const [userValue,setUserValue]=user;
+    const { user, type } = React.useContext(Context);
+    const [userValue, setUserValue] = user;
     //const [typeValue,setTypeValue]=type;
     const history = useHistory();
 
-    function logout(){
+    function logout() {
         console.log("ashso");
         auth.logout(() => {
             console.log("ashso");
@@ -21,6 +22,7 @@ const Admin = () => {
 
     return (
         <div>
+            <AdminNavbar></AdminNavbar>
             <h1>Index Page</h1>
             <h1>User type : {userValue.type}</h1>
             <h1>User name : {userValue.name}</h1>
