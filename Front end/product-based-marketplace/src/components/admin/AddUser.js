@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from "react";
+import Back from './Back';
+import validator from 'validator'
 
 function AddUser() {
     const [name, setName] = useState("");
@@ -26,21 +28,36 @@ function AddUser() {
         formData.append('type', type);
         formData.append('password', password);
         formData.append('rpass', rpass);
-        let result = await fetch("http://127.0.0.1:8000/api/admin/addUser", {
-            method: 'POST',
-            // headers: {
-            //     "Content-Type": "application/json",
-            //     "Accept": 'application/json'
-            // },
-            body: formData
-        });
+        console.log(formData);
+        if (name == "" || email == "" || address == "" || phone == "" || image == "" || type == "" || password == "" || rpass == "") {
+            setError("Please fill up all the fields");
+        }
+        else if (password != rpass) {
+            setError("Password does not match");
+        }
+        else if (password.length < 10 || rpass.length < 10) {
+            setError("Password should be at least 10 characters");
+        }
+        else if (!validator.isEmail(email)) {
+            setError("enter a valid email");
+        }
+        else {
+            console.log("am");
+            let result = await fetch("http://127.0.0.1:8000/api/admin/addUser", {
+                method: 'POST',
+                // headers: {
+                //     "Content-Type": "application/json",
+                //     "Accept": 'application/json'
+                // },
+                body: formData
+            });
 
-        result = await result.json();
-        localStorage.setItem("user-info", JSON.stringify(result));
-        const message = localStorage.getItem('user-info')
-        JSON.parse(message);
-        alert(message);
-
+            result = await result.json();
+            localStorage.setItem("user-info", JSON.stringify(result));
+            const message = localStorage.getItem('user-info')
+            JSON.parse(message);
+            alert(message);
+        }
     }
 
     return (
@@ -120,9 +137,11 @@ function AddUser() {
                             </td>
                         </tr>
                         <tr>
-                            <td><button onClick={add}>Login</button></td>
+                            <td><button onClick={add}>Add</button></td>
+                            <Back></Back>
                         </tr>
                     </table>
+                    {error}
                 </fieldset>
             </div>
         </div>

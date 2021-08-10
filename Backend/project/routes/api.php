@@ -26,3 +26,10 @@ Route::post('/login', 'LoginController@verify');
 Route::post('/admin/addUser', 'UserController@insertuser');
 Route::get('/admin/showUser', 'UserController@showUser');
 
+// Route::group(['middleware' => 'cors'], function () {
+//     Route::post('/admin/addUser', 'UserController@insertuser');
+// });
+// Route::group(['middleware' => 'cors'], function () {
+//     Route::post('/admin/addUser', 'UserController@insertuser');
+// });
+

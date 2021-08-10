@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFetch } from '../UseFetch';
 import { useState } from 'react';
+import Back from './Back';
 
 const ShowUser = () => {
     const url = `http://127.0.0.1:8000/api/admin/showUser`;
@@ -13,6 +14,7 @@ const ShowUser = () => {
 
     return (
         <div>
+            <Back></Back>
             <h1>Show User Page</h1>
             <table>
                 <tr>

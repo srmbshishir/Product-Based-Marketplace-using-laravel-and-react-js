@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\ProRequest;
 
+
 class UserController extends Controller
 {
     public function index(){
@@ -218,7 +219,7 @@ class UserController extends Controller
             return json_encode("file not found.");
             
         }    
-        //return json_encode($errors);
+        return $errors;
     }
     //ADMIN PROFILE WORK
     public function profileadmin($id){
