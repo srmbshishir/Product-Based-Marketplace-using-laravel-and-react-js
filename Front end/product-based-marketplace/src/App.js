@@ -9,6 +9,7 @@ import approveProducts from './components/admin/ApproveProducts';
 import Dashboard from './components/admin/Dashboard';
 import myProfile from './components/admin/MyProfile';
 import ShowUser from './components/admin/ShowUser';
+import Edit from './components/admin/Edit';
 
 import Buyer from './components/buyer';
 import Seller from './components/seller';
@@ -41,6 +42,7 @@ function App() {
                     <ProtectedRoute exact path='/admin/approveproducts' component={approveProducts} />
                     <ProtectedRoute exact path='/admin/myprofile' component={myProfile} />
                     <ProtectedRoute exact path='/admin/dashboard' component={Dashboard} />
+                    <ProtectedRoute exact path='/admin/edit/:id' component={Edit} />
 
 
 

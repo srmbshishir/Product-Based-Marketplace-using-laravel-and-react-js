@@ -142,7 +142,8 @@ class UserController extends Controller
     public function edit($id){
         // return view('Seller.profile');
          $user = User::find($id);
-         return view('Admin.edit')->with('user', $user);
+         //return view('Admin.edit')->with('user', $user);
+         return $user;
     }
     public function update(Request $req, $id)
     {
@@ -154,7 +155,7 @@ class UserController extends Controller
         $user->type = $req->type;
 
         $user->save();
-        return redirect()->route('showuser');
+        return json_encode("user updated");
     }
     public function delete($id)
     {
