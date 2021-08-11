@@ -25,6 +25,8 @@ Route::get('/','ApiController@api');
 Route::post('/login', 'LoginController@verify');
 Route::post('/admin/addUser', 'UserController@insertuser');
 Route::get('/admin/showUser', 'UserController@showUser');
+Route::get('/admin/{id}/edit', 'UserController@edit');
+Route::post('/admin/{id}/edit', 'UserController@update');
 
 // Route::group(['middleware' => 'cors'], function () {
 //     Route::post('/admin/addUser', 'UserController@insertuser');
