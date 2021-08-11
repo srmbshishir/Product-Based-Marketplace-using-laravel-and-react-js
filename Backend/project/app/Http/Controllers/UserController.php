@@ -228,7 +228,7 @@ class UserController extends Controller
          $user = User::find($id);
          return view('Admin.profile')->with('user', $user);
     }
-     public function adminupdate(ProRequest $req, $id)
+     public function adminupdate(Request $req, $id)
     {
         $user= User::find($id);
         $user->name = $req->name;
@@ -238,7 +238,7 @@ class UserController extends Controller
         $user->password = $req->password;
 
         $user->save();
-        return view('Admin.profile')->with('user',$user);
+        return json_encode("user updated");
     }
     public function adminimage(Request $req,$id){
         $user= User::find($id);

@@ -40,7 +40,7 @@ function App() {
                     <ProtectedRoute exact path='/admin/adduser' component={AddUser} />
                     <ProtectedRoute exact path='/admin/showuser' component={ShowUser} />
                     <ProtectedRoute exact path='/admin/approveproducts' component={approveProducts} />
-                    <ProtectedRoute exact path='/admin/myprofile' component={myProfile} />
+                    <ProtectedRoute exact path='/admin/myprofile/:id' component={myProfile} />
                     <ProtectedRoute exact path='/admin/dashboard' component={Dashboard} />
                     <ProtectedRoute exact path='/admin/edit/:id' component={Edit} />
 
