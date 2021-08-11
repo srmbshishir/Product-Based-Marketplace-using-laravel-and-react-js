@@ -116,7 +116,7 @@ const Edit = () => {
                             <Back></Back>
                         </tr>
                     </table>
-                    {/* {error} */}
+                    {error}
                 </fieldset>
             </div>
         </div>
