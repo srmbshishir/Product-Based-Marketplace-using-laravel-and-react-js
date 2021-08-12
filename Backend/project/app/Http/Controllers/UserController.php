@@ -131,13 +131,15 @@ class UserController extends Controller
         $users = $user->get();
         return $users;
     }
-    public function usersearch(Request $req)
+    public function usersearch($key)
     {
-        $user =new User();
-        $users = $user->where('id','like','%'.$req->search.'%')->orwhere('type','like','%'.$req->search.'%')->paginate(5);
-        //SELECT * FROM `product` WHERE id like 'elec%' or category like 'elec%'
-        //dd($req->all());
-        return view('Admin.userlist')->with('userlist', $users);
+        // $user =new User();
+        // $users = $user->where('id','like','%'.$req->search.'%')->orwhere('type','like','%'.$req->search.'%')->get;
+        // //SELECT * FROM `product` WHERE id like 'elec%' or category like 'elec%'
+        // //dd($req->all());
+        // // return response()->json($users);
+
+        return User::where('id','like',"%$key%")->orwhere('type','like',"%$key%")->get();
     }
     public function edit($id){
         // return view('Seller.profile');

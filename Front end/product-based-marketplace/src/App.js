@@ -18,6 +18,7 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 
 import React, { useContext } from 'react';
 import { Context } from './components/StoreUser';
+import SearchUser from './components/admin/SearchUser';
 
 function App() {
     const { user, type } = React.useContext(Context);
@@ -43,6 +44,7 @@ function App() {
                     <ProtectedRoute exact path='/admin/myprofile/:id' component={myProfile} />
                     <ProtectedRoute exact path='/admin/dashboard' component={Dashboard} />
                     <ProtectedRoute exact path='/admin/edit/:id' component={Edit} />
+                    <ProtectedRoute exact path='/admin/search' component={SearchUser} />
 
 
 
