@@ -69,7 +69,7 @@ class OrderController extends Controller
     }
     public function admindashboard(Request $req){
         //SELECT sum(price) FROM `orderlist` where track='delivered''
-        $orders= DB::select("SELECT sum(price) FROM `orderlist` WHERE track='delivered'");
+        $orders= DB::select("SELECT sum(price) as sum FROM `orderlist` WHERE track='delivered'");
         //SELECT sum(price),sellerid FROM `orderlist` GROUP BY sellerid
         $sellers=DB::select("SELECT sum(price) as sum,sellerid FROM `orderlist` GROUP BY sellerid");
 
@@ -83,7 +83,7 @@ class OrderController extends Controller
         ];
        //  dd($req->all());
        //  print_r($data['total_income'][0]->sum(price));
-        return view('Admin.dashboard')->with('orderlist', $data);
+        return $data;
     }
     public function buyerdashboard(Request $req, $id){
         //SELECT sum(price) FROM `orderlist` WHERE track='delivered' and sellerid='S-104'
