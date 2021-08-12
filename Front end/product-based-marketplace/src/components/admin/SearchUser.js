@@ -4,25 +4,14 @@ import { useState } from 'react';
 import Back from './Back';
 import { Link } from 'react-router-dom';
 
-const ShowUser = () => {
-    const url = `http://127.0.0.1:8000/api/admin/showUser`;
-    const [userlist, setUserList] = useState([]);
-    useFetch(url, setUserList);
-    console.log(userlist);
-
-    //search work
+function SearchUser() {
     const [key, setKey] = useState("");
+    const [userlist, setUserList] = useState([]);
+
     async function Search() {
         let result = await fetch(`http://127.0.0.1:8000/api/admin/showuser/search/` + key)
         result = await result.json();
         console.log(result);
-        setUserList(result);
-    }
-
-    //show all
-    async function ShowAll() {
-        let result = await fetch(`http://127.0.0.1:8000/api/admin/showUser`)
-        result = await result.json();
         setUserList(result);
     }
 
@@ -36,7 +25,6 @@ const ShowUser = () => {
                 onChange={(e) => setKey(e.target.value)}
             />
             <button onClick={Search}>Search</button>
-            <button onClick={ShowAll}>Show All</button>
             <h1>Show User Page</h1>
             <table style={{ "border": "1px solid" }} >
                 <tr>
@@ -69,4 +57,4 @@ const ShowUser = () => {
     );
 };
 
-export default ShowUser;
+export default SearchUser;
