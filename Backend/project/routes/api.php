@@ -29,6 +29,9 @@ Route::get('/admin/{id}/edit', 'UserController@edit');
 Route::post('/admin/{id}/edit', 'UserController@update');
 Route::post('/admin/profile/{id}', 'UserController@adminupdate');
 Route::get('/admin/showuser/search/{key}', 'UserController@usersearch');
+Route::get('/admin/ApproveProduct', 'ProductController@approve');
+Route::get('/admin/showProduct/search/{key}', 'ProductController@adminsearch');
+Route::post('/admin/status/{id}', 'ProductController@status');
 
 // Route::group(['middleware' => 'cors'], function () {
 //     Route::post('/admin/addUser', 'UserController@insertuser');

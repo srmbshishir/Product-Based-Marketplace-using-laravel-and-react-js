@@ -48,6 +48,7 @@
                 <td>{{$product->description}}</td>
                 <td><img src="/upload/{{$product->image}}" alt="" width="100px" height="80px"></td>
                 <td>{{$product->status}}</td>
+                
                 <td>
                     <form method="post" enctype="multipart/form-data" action="/admin/status/{{$product->id}}">
                         @csrf
