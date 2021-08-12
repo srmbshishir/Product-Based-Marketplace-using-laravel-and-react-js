@@ -32,6 +32,7 @@ Route::get('/admin/showuser/search/{key}', 'UserController@usersearch');
 Route::get('/admin/ApproveProduct', 'ProductController@approve');
 Route::get('/admin/showProduct/search/{key}', 'ProductController@adminsearch');
 Route::post('/admin/status/{id}', 'ProductController@status');
+Route::get('/admin/dashboard/', 'OrderController@admindashboard');
 
 // Route::group(['middleware' => 'cors'], function () {
 //     Route::post('/admin/addUser', 'UserController@insertuser');
