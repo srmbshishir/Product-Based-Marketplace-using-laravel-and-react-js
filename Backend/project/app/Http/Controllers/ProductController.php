@@ -147,9 +147,9 @@ class ProductController extends Controller
     }
     public function approve(){
         $product =new Product();
-        $products = $product->orderBy('id','desc')->paginate(5);
+        $products = $product->get();
         //return view('product.existing')->with('list',$list);
-        return view('Admin.approve')->with('userlist', $products);
+        return $products;
     }
     public function status(Request $req, $id)
     {
@@ -160,15 +160,11 @@ class ProductController extends Controller
 
         $product->save();
         //dd($req->all());
-        return redirect('/admin/ApproveProduct');
+        return json_encode("$id status updated to $product->status");
     }
-    public function adminsearch(Request $req)
+    public function adminsearch($key)
     {
-        $product =new Product();
-        $products = $product->where('id','like','%'.$req->search.'%')->orwhere('category','like','%'.$req->search.'%')->paginate(3);
-        //SELECT * FROM `product` WHERE id like 'elec%' or category like 'elec%'
-        //dd($req->all());
-        return view('Admin.approve')->with('userlist', $products);
+        return Product::where('id','like',"%$key%")->orwhere('category','like',"%$key%")->get();
     }
     public function welcomesearch(Request $req)
     {
