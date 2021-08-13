@@ -9,6 +9,10 @@ import './navbar.css';
 const AdminNavbar = () => {
     const { id: eid } = useParams();
 
+    const mystyle = {
+        textDecoration: "none",
+    }
+
 
     return (
         <div>
@@ -16,11 +20,11 @@ const AdminNavbar = () => {
                 <Container>
                     <Navbar.Brand href="" style={{ color: "goldenrod" }}>Menu</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link><Link to="/admin/adduser">Add User</Link></Nav.Link>
-                        <Nav.Link><Link to="/admin/approveproducts">Approve Products</Link></Nav.Link>
-                        <Nav.Link><Link to="/admin/showuser">Show User</Link> </Nav.Link>
-                        <Nav.Link><Link to={`/admin/myprofile/${eid}`}>My Profile</Link></Nav.Link>
-                        <Nav.Link><Link to="/admin/dashboard">Dashbaord</Link> </Nav.Link>
+                        <Nav.Link><Link style={mystyle} to="/admin/adduser">Add User</Link></Nav.Link>
+                        <Nav.Link><Link style={mystyle} to="/admin/approveproducts">Approve Products</Link></Nav.Link>
+                        <Nav.Link><Link style={mystyle} to="/admin/showuser">Show User</Link> </Nav.Link>
+                        <Nav.Link><Link style={mystyle} to={`/admin/myprofile/${eid}`}>My Profile</Link></Nav.Link>
+                        <Nav.Link><Link style={mystyle} to="/admin/dashboard">Dashbaord</Link> </Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
