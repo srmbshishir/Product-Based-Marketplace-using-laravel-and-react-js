@@ -20,6 +20,7 @@ import React, { useContext } from 'react';
 import { Context } from './components/StoreUser';
 import SearchUser from './components/admin/SearchUser';
 import AddProduct from './components/seller/AddProduct';
+import ShowProduct from './components/seller/ShowProduct';
 
 function App() {
     const { user, type } = React.useContext(Context);
@@ -55,6 +56,7 @@ function App() {
                 </Route>  */}
                     <ProtectedRoute exact path='/seller/index/:id' component={Seller} />
                     <ProtectedRoute exact path='/seller/addproduct' component={AddProduct} />
+                    <ProtectedRoute exact path='/seller/showproduct' component={ShowProduct} />
                     {/* <Route exact path='/seller/index/:id'> 
                     <Seller></Seller>
                 </Route>  */}

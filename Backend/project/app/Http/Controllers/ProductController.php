@@ -64,35 +64,10 @@ class ProductController extends Controller
         return json_encode("error");
     }
 
-    public function show(Request $req){
-
-        //$products= DB::table('product')
-          //          ->where('userid' ,'like', '%' . session('id') . '%');
-        //select("SELECT * FROM `product` WHERE userid='".session('id')."'");
-
-        //$products->paginate(3);
-        //return view('Seller.show')->with('userlist', $products);
-
+    public function show($id){
         $product =new Product();
-        $products = $product->where('userid',session('id'))->paginate(3);
-        //return view('product.existing')->with('list',$list);
-        return view('Seller.show')->with('userlist', $products);
-      
-        //$products= DB::select("SELECT * FROM `product` WHERE userid='".session('id')."'");
-        
-       /*
-        $data = DB::table('holes');
-       $products->paginate(3);
-       return view('Product.userlist');
-        ...
-        and then just filter and return it in the if/else statement call
-       return $data->where('city' ,'like', '%' . $city . '%');
-        ...
-        $products = Product::where('userid', session('id'));
-        $data->where('city' ,'like', '%' . $city . '%');
-        or append to the $data
-        $data = $data->where('city' ,'like', '%' . $city . '%');
-  */
+        $products = $product->where('userid',$id)->get();
+        return $products;
     }
 
     public function edit($name)
@@ -137,13 +112,13 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('show');
     }
-    public function search(Request $req)
+    public function search($id,$key)
     {
         $product =new Product();
-        $products = $product->where('id','like','%'.$req->search.'%')->where('userid',session('id'))->orwhere('category','like','%'.$req->search.'%')->where('userid',session('id'))->paginate(3);
+        $products = $product->where('id','like','%'.$key.'%')->where('userid',$id)->orwhere('category','like','%'.$key.'%')->where('userid',$id)->get();
         //SELECT * FROM `product` WHERE id like 'elec%' or category like 'elec%'
         //dd($req->all());
-        return view('Seller.show')->with('userlist', $products);
+        return $products;
     }
     public function approve(){
         $product =new Product();
