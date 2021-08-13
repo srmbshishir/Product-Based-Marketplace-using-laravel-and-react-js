@@ -42,3 +42,5 @@ Route::post('/admin/pic/{id}', 'UserController@adminimage');
 //     Route::post('/admin/addUser', 'UserController@insertuser');
 // });
 
+//---------Seller-------------
+Route::post('/seller/addProduct/{id}', 'ProductController@insert');

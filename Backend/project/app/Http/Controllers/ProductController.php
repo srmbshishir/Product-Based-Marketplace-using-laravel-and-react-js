@@ -15,7 +15,7 @@ class ProductController extends Controller
         return view('Seller.add');
     }
 
-    public function insert(ProductRequest $req){
+    public function insert(ProductRequest $req,$id){
         $product = new Product;
 
         //$product->id                = DB::table('products')->increment('id');
@@ -34,7 +34,7 @@ class ProductController extends Controller
         $product->price             = $req->price; 
         $product->p_condition       = $req->condition; 
         $product->category          = $req->category; 
-        $product->userid            = session('id');
+        $product->userid            = $id;
         $product->quantity          = $req->quantity;
         $product->discount          = $req->discount;
         $product->description       = $req->description;
@@ -52,16 +52,16 @@ class ProductController extends Controller
             $product->save();
 
             if($file->move('upload', $file->getClientOriginalName())){
-                echo "success";
+                return json_encode("Product added");
             }else{
-                echo "error..";
+                return json_encode("error");
             }
 
         }else{
-            echo "file not found!";
+            return json_encode("file not found");
         }
 
-        return redirect()->route('show');
+        return json_encode("error");
     }
 
     public function show(Request $req){
