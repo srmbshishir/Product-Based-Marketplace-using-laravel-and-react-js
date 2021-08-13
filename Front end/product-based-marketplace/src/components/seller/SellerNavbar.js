@@ -4,9 +4,8 @@ import './bootstrap/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
-import './navbar.css';
 
-const AdminNavbar = () => {
+const SellerNavbar = () => {
     const { id: eid } = useParams();
 
     const mystyle = {
@@ -20,7 +19,7 @@ const AdminNavbar = () => {
                 <Container>
                     <Navbar.Brand href="" style={{ color: "goldenrod" }}>Menu</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link><Link style={mystyle} to="/admin/adduser">Add User</Link></Nav.Link>
+                        <Nav.Link><Link style={mystyle} to="/seller/addproduct">Add Product</Link></Nav.Link>
                         <Nav.Link><Link style={mystyle} to="/admin/approveproducts">Approve Products</Link></Nav.Link>
                         <Nav.Link><Link style={mystyle} to="/admin/showuser">Show User</Link> </Nav.Link>
                         <Nav.Link><Link style={mystyle} to={`/admin/myprofile/${eid}`}>My Profile</Link></Nav.Link>
@@ -34,4 +33,4 @@ const AdminNavbar = () => {
     );
 }
 
-export default AdminNavbar;
+export default SellerNavbar;
