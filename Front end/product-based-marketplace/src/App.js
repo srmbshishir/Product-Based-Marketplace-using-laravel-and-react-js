@@ -21,6 +21,8 @@ import { Context } from './components/StoreUser';
 import SearchUser from './components/admin/SearchUser';
 import AddProduct from './components/seller/AddProduct';
 import ShowProduct from './components/seller/ShowProduct';
+import EditSeller from './components/seller/Edit';
+import Delete from './components/seller/Delete';
 
 function App() {
     const { user, type } = React.useContext(Context);
@@ -57,6 +59,8 @@ function App() {
                     <ProtectedRoute exact path='/seller/index/:id' component={Seller} />
                     <ProtectedRoute exact path='/seller/addproduct' component={AddProduct} />
                     <ProtectedRoute exact path='/seller/showproduct' component={ShowProduct} />
+                    <ProtectedRoute exact path='/seller/edit/:id' component={EditSeller} />
+                    <ProtectedRoute exact path='/seller/delete/:id' component={Delete} />
                     {/* <Route exact path='/seller/index/:id'> 
                     <Seller></Seller>
                 </Route>  */}

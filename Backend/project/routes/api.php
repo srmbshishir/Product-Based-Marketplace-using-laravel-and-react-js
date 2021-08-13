@@ -46,3 +46,6 @@ Route::post('/admin/pic/{id}', 'UserController@adminimage');
 Route::post('/seller/addProduct/{id}', 'ProductController@insert');
 Route::get('/seller/showProduct/{id}', 'ProductController@show');
 Route::get('/seller/showProduct/search/{id}/{key}', 'ProductController@search');
+Route::get('/product/edit/{id}', 'ProductController@edit');
+Route::post('/product/edit/{id}', 'ProductController@update');
+Route::get('/product/delete/{id}', 'ProductController@delete');
