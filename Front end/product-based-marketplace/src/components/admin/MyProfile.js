@@ -5,6 +5,8 @@ import { useParams } from "react-router";
 import Back from './Back';
 import validator from 'validator';
 
+
+
 const MyProfile = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -59,6 +61,35 @@ const MyProfile = () => {
             JSON.parse(message);
             alert(message);
         }
+
+
+    }
+    const mystyle = {
+        width: 100,
+        height: 100,
+        // CSS CODE
+    };
+    //change picture
+    const [image, setImage] = useState("");
+    async function Change(id) {
+        const formData = new FormData();
+        formData.append('image', image);
+
+        let result = await fetch(`http://127.0.0.1:8000/api/admin/pic/${id}`, {
+            method: 'POST',
+            // headers: {
+            //     "Content-Type": "application/json",
+            //     "Accept": 'application/json'
+            // },
+            body: formData
+        });
+
+        result = await result.json();
+        localStorage.setItem("user-info", JSON.stringify(result));
+        const message = localStorage.getItem('user-info')
+        JSON.parse(message);
+        alert(message);
+
     }
 
     return (
@@ -121,11 +152,23 @@ const MyProfile = () => {
                             </td>
                         </tr>
                         <tr>
+                            {/* <td><img src={require(`./upload/${userlist.image}`).default} style={mystyle}></img></td> */}
+                        </tr>
+                        <tr>
                             <td><button onClick={update}>Update</button></td>
                             <Back></Back>
                         </tr>
                     </table>
                     {error}
+                </fieldset>
+                <fieldset>
+                    <label>Change Profile Picture</label>
+                    {/* <img src={require(`./upload/${userlist.image}`).default} style={mystyle}></img> */}
+                    <input type="file"
+                        name="image"
+                        onChange={(e) => setImage(e.target.files[0])}
+                    />
+                    <button onClick={() => Change(userlist.id)}>Change Profile Picture </button>
                 </fieldset>
             </div>
         </div>
