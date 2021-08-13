@@ -70,16 +70,16 @@ class ProductController extends Controller
         return $products;
     }
 
-    public function edit($name)
+    public function edit($id)
     {
-        $product = Product::find($name);
-        return view('Seller.edit')->with('product', $product);
+        $product = Product::find($id);
+        return $product;
     }
     
 
-    public function update(ProductRequest $req, $name)
+    public function update(ProductRequest $req, $id)
     {
-        $product= Product::find($name);
+        $product= Product::find($id);
         $product->name = $req->name;
         $product->price = $req->price;
         $product->p_condition = $req->condition;
@@ -96,21 +96,21 @@ class ProductController extends Controller
             
 
             if($file->move('upload', $file->getClientOriginalName())){
-                echo "success";
                 $product->save();
-                return redirect()->route('show');
+                return json_encode("updated");
                 
                 
             }else{
-                echo "error..";
+                return json_encode("error");
             }
         }
+        return json_encode("image not found");
     }
-    public function delete($name)
+    public function delete($id)
     {
-        $product = Product::find($name);
+        $product = Product::find($id);
         $product->delete();
-        return redirect()->route('show');
+        return json_encode("deleted");
     }
     public function search($id,$key)
     {

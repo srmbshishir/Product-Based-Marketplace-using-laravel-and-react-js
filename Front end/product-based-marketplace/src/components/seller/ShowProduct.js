@@ -60,6 +60,9 @@ const ShowProduct = () => {
                     <td>Quantity</td>
                     <td>Description</td>
                     <td>Image</td>
+                    <td>Edit Product</td>
+                    <td>Delete</td>
+
                 </tr>
                 {
                     productlist.map((item) =>
@@ -75,6 +78,9 @@ const ShowProduct = () => {
 
                             <td>
                                 <Link to={`edit/${item.id}`}> EDIT</Link>
+                            </td>
+                            <td>
+                                <Link to={`delete/${item.id}`}> Delete</Link>
                             </td>
                         </tr>
                     )
