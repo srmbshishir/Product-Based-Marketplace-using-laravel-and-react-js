@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { useState } from 'react';
 import Back from './Back';
 import { useFetch } from '../UseFetch';
+import Table from 'react-bootstrap/esm/Table';
+import Button from 'react-bootstrap/esm/Button';
 
 
 const Dashboard = () => {
@@ -32,11 +34,11 @@ const Dashboard = () => {
     return (
         <div>
             <h1>Dashboard page</h1>
-            <button onClick={See}>Show</button>
+            <Button onClick={See}>Show</Button>
 
             <h1>Total transaction through this website is TK. {sum}</h1>
             <h1>Top Seller table</h1>
-            <table>
+            <Table striped bordered hover>
                 <tr>
                     <td>Seller Id</td>
                     <td>Item Sum</td>
@@ -47,7 +49,7 @@ const Dashboard = () => {
                         <td>{item.sum}</td>
                     </tr>
                 )}
-            </table>
+            </Table>
             <Back></Back>
         </div>
     );

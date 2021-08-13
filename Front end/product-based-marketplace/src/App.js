@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './components/navbar';
+import HomeNavbar from './components/navbar';
 import Login from './components/login';
 
 import Admin from './components/admin';
@@ -30,7 +30,7 @@ function App() {
                 <Switch>
 
                     <Route exact path='/'>
-                        <Navbar></Navbar>
+                        <HomeNavbar></HomeNavbar>
                         <h1>Welcome Home!</h1>
                     </Route>
                     <Route exact path='/login'>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from "react";
 import Back from './Back';
 import validator from 'validator'
+import Button from 'react-bootstrap/esm/Button';
 
 function AddUser() {
     const [name, setName] = useState("");
@@ -62,7 +63,8 @@ function AddUser() {
 
     return (
         <div>
-            <h1>Add User</h1>
+            <h1 style={{ textAlign: 'center' }}>Add User</h1>
+            <br></br>
             <div align="center">
                 <fieldset>
                     <table>
@@ -72,6 +74,7 @@ function AddUser() {
                                     name="name"
                                     id="name"
                                     placeholder="Name"
+                                    className="form-control"
                                     onChange={(e) => setName(e.target.value)} />
                             </td>
                         </tr>
@@ -81,6 +84,7 @@ function AddUser() {
                                     name="email"
                                     id="email"
                                     placeholder="Email"
+                                    className="form-control"
                                     onChange={(e) => setEmail(e.target.value)} />
                             </td>
                         </tr>
@@ -90,6 +94,7 @@ function AddUser() {
                                     name="address"
                                     id="address"
                                     placeholder="Address"
+                                    className="form-control"
                                     onChange={(e) => setAdress(e.target.value)} />
                             </td>
                         </tr>
@@ -99,13 +104,15 @@ function AddUser() {
                                     name="phone"
                                     id="phone"
                                     placeholder="Contact Number"
+                                    className="form-control"
                                     onChange={(e) => setPhone(e.target.value)} />
                             </td>
                         </tr>
                         <tr>
                             <td>User Type:
                                 <select name="type"
-                                    onChange={(e) => setType(e.target.value)}>
+                                    onChange={(e) => setType(e.target.value)}
+                                    className="form-control">
                                     <option value="admin">Admin</option>
                                     <option value="seller">Seller</option>
                                     <option value="buyer">Buyer</option>
@@ -116,6 +123,7 @@ function AddUser() {
                             <td>Picture:
                                 <input type="file"
                                     name="image"
+                                    className="form-control"
                                     onChange={(e) => setImage(e.target.files[0])} />
                             </td>
                         </tr>
@@ -125,6 +133,7 @@ function AddUser() {
                                     name="password"
                                     id="pass"
                                     placeholder="Password"
+                                    className="form-control"
                                     onChange={(e) => setPassword(e.target.value)} />
                             </td>
                         </tr>
@@ -133,18 +142,22 @@ function AddUser() {
                                 name="rpass"
                                 id="rpass"
                                 placeholder="Re-type Password"
+                                className="form-control"
                                 onChange={(e) => setrpass(e.target.value)} />
                             </td>
                         </tr>
+                        <br></br>
+                        <br></br>
                         <tr>
-                            <td><button onClick={add}>Add</button></td>
+                            <td><Button variant="outline-success" onClick={add}>Add User</Button>
+                            </td>
                             <Back></Back>
                         </tr>
                     </table>
                     {error}
                 </fieldset>
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -3,6 +3,7 @@ import { useFetch } from '../UseFetch';
 import { useState } from 'react';
 import Back from './Back';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const ShowUser = () => {
     const url = `http://127.0.0.1:8000/api/admin/showUser`;
@@ -64,10 +65,11 @@ const ShowUser = () => {
                 name="search"
                 onChange={(e) => setKey(e.target.value)}
             />
-            <button onClick={Search}>Search</button>
-            <button onClick={ShowAll}>Show All</button>
+            <Button variant="outline-dark" onClick={Search}>Search</Button>
+            <br></br>
+            <Button onClick={ShowAll}>Show All</Button>
             <h1>Show User Page</h1>
-            <table style={{ "border": "1px solid" }} >
+            <table striped bordered hover>
                 <tr>
                     <td>Id</td>
                     <td>Name</td>

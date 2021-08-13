@@ -3,6 +3,7 @@ import { Context } from '../StoreUser';
 import { useHistory } from "react-router";
 import auth from '../auth';
 import AdminNavbar from './AdminNavbar';
+import Button from 'react-bootstrap/Button'
 
 
 
@@ -26,7 +27,7 @@ const Admin = () => {
             <h1>Index Page</h1>
             <h1>User type : {userValue.type}</h1>
             <h1>User name : {userValue.name}</h1>
-            <button onClick={logout}>Logout</button>
+            <Button variant="outline-danger" onClick={logout}>Logout</Button>
 
             {/* <h1>{typeValue}</h1> */}
         </div>

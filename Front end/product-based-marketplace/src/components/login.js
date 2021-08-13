@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useState } from "react";
+import Button from 'react-bootstrap/esm/Button';
 import { useHistory } from "react-router";
 import auth from './auth';
 import Navbar from './navbar';
@@ -100,7 +101,10 @@ function Login() {
     return (
         <div>
             <Navbar></Navbar>
-            <h1>Login page</h1>
+            <br></br>
+            <h1 style={{ textAlign: 'center' }}>Login page</h1>
+            <br></br>
+            <br></br>
             <div className="col-sm-6 offset-sm-3">
                 <input
                     type="text"
@@ -114,7 +118,7 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                     className="form-control" />
                 <br />
-                <button onClick={login}>Login</button>
+                <Button onClick={login}>Login</Button>
                 <br />
 
                 {/* {this.error.map((e)=>{
