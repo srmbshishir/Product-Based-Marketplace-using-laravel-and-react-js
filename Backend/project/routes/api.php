@@ -33,7 +33,8 @@ Route::get('/admin/ApproveProduct', 'ProductController@approve');
 Route::get('/admin/showProduct/search/{key}', 'ProductController@adminsearch');
 Route::post('/admin/status/{id}', 'ProductController@status');
 Route::get('/admin/dashboard/', 'OrderController@admindashboard');
-
+Route::post('/admin/userstatus/{id}', 'UserController@status');
+Route::post('/admin/pic/{id}', 'UserController@adminimage');
 // Route::group(['middleware' => 'cors'], function () {
 //     Route::post('/admin/addUser', 'UserController@insertuser');
 // });

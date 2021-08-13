@@ -52,6 +52,7 @@
         <input type="file" name="image" class="btn btn-warning">
         <input type="submit" name="update" class="btn btn-primary" value="change">
     </form>
+    
       @foreach ($errors->all() as $error)
         {{$error}} <br>
       @endforeach

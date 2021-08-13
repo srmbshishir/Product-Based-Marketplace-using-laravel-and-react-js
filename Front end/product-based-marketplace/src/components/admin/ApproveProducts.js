@@ -49,6 +49,12 @@ const ApproveProduct = () => {
         alert(message);
     }
 
+    const mystyle = {
+        width: 100,
+        height: 100,
+        // CSS CODE
+    };
+
     return (
         <div>
             <Back></Back>
@@ -70,6 +76,7 @@ const ApproveProduct = () => {
                     <td>Discount</td>
                     <td>Status</td>
                     <td>Seller Id</td>
+                    <td>Image</td>
                     <td>Action</td>
                 </tr>
                 {
@@ -83,6 +90,7 @@ const ApproveProduct = () => {
                             <td>{item.discount}</td>
                             <td>{item.status}</td>
                             <td>{item.userid}</td>
+                            <img src={`../upload/${item.image}`} style={mystyle}></img>
                             <td>
                                 <label for="status">Update Status:</label>
 

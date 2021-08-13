@@ -254,15 +254,15 @@ class UserController extends Controller
             $user->save();
 
             if($file->move('upload', $file->getClientOriginalName())){
-                echo "success";
+                return json_encode("image updated");
             }else{
-                echo "error..";
+                return json_encode("error");
             }
 
         }else{
-            echo "file not found!";
+            return json_encode("file not found");
         }
-        return view('Admin.profile')->with('user',$user);
+        return json_encode("error");
     }
 
     public function status(Request $req, $id)
@@ -274,7 +274,7 @@ class UserController extends Controller
 
         $user->save();
         //dd($req->all());
-        return redirect('/admin/showUser');
+        return json_encode("$id status updated to $user->status");
     }
 
 
