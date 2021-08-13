@@ -20,7 +20,7 @@ const SellerNavbar = () => {
                     <Navbar.Brand href="" style={{ color: "goldenrod" }}>Menu</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link><Link style={mystyle} to="/seller/addproduct">Add Product</Link></Nav.Link>
-                        <Nav.Link><Link style={mystyle} to="/admin/approveproducts">Approve Products</Link></Nav.Link>
+                        <Nav.Link><Link style={mystyle} to="/seller/showproduct">Show Products</Link></Nav.Link>
                         <Nav.Link><Link style={mystyle} to="/admin/showuser">Show User</Link> </Nav.Link>
                         <Nav.Link><Link style={mystyle} to={`/admin/myprofile/${eid}`}>My Profile</Link></Nav.Link>
                         <Nav.Link><Link style={mystyle} to="/admin/dashboard">Dashbaord</Link> </Nav.Link>
