@@ -3,6 +3,8 @@ import { useFetch } from '../UseFetch';
 import { useState } from 'react';
 import Back from './Back';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/esm/Button';
+import Table from 'react-bootstrap/Table'
 
 const ApproveProduct = () => {
     const url = `http://127.0.0.1:8000/api/admin/ApproveProduct`;
@@ -63,10 +65,12 @@ const ApproveProduct = () => {
                 name="search"
                 onChange={(e) => setKey(e.target.value)}
             />
-            <button onClick={Search}>Search</button>
-            <button onClick={ShowAll}>Show All</button>
+            <Button variant="outline-dark" onClick={Search}>Search</Button>
+            <br></br>
+            <Button onClick={ShowAll}>Show All</Button>
             <h1>Show Product and Approve</h1>
-            <table style={{ "border": "1px solid" }} >
+
+            <Table striped bordered hover>
                 <tr>
                     <td>Id</td>
                     <td>Name</td>
@@ -96,18 +100,19 @@ const ApproveProduct = () => {
 
                                 <select name="status"
                                     id="status"
+                                    classname="form-control"
                                     value={item.status}
                                     onChange={(e) => setStatus(e.target.value)}>
                                     <option value="pending">Pending</option>
                                     <option value="accepted">Accepted</option>
                                     <option value="cancelled">Cancelled</option>
                                 </select>
-                                <button onClick={() => Approve(item.id)}>Change Status</button>
+                                <Button variant="outline-dark" onClick={() => Approve(item.id)}>Change Status</Button>
                             </td>
                         </tr>
                     )
                 }
-            </table >
+            </Table >
         </div >
     );
 };

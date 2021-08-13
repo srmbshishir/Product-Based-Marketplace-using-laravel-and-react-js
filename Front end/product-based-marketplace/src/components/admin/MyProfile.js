@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useParams } from "react-router";
 import Back from './Back';
 import validator from 'validator';
+import Button from 'react-bootstrap/esm/Button';
 
 
 
@@ -104,6 +105,7 @@ const MyProfile = () => {
                                     name="name"
                                     id="name"
                                     placeholder={userlist.name}
+                                    className="form-control"
                                     onChange={(e) => setName(e.target.value)} />
                             </td>
                         </tr>
@@ -113,6 +115,7 @@ const MyProfile = () => {
                                     name="email"
                                     id="email"
                                     placeholder={userlist.email}
+                                    className="form-control"
                                     onChange={(e) => setEmail(e.target.value)} />
                             </td>
                         </tr>
@@ -121,6 +124,7 @@ const MyProfile = () => {
                                 <input type="text"
                                     name="address"
                                     id="address"
+                                    className="form-control"
                                     placeholder={userlist.address}
                                     onChange={(e) => setAdress(e.target.value)} />
                             </td>
@@ -130,6 +134,7 @@ const MyProfile = () => {
                                 <input type="phone"
                                     name="phone"
                                     id="phone"
+                                    className="form-control"
                                     placeholder={userlist.phone}
                                     onChange={(e) => setPhone(e.target.value)} />
                             </td>
@@ -139,6 +144,7 @@ const MyProfile = () => {
                                 <input type="password"
                                     name="password"
                                     id="pass"
+                                    className="form-control"
                                     placeholder="Password"
                                     onChange={(e) => setPassword(e.target.value)} />
                             </td>
@@ -147,6 +153,7 @@ const MyProfile = () => {
                             <td><input type="password"
                                 name="rpass"
                                 id="rpass"
+                                className="form-control"
                                 placeholder="Re-type Password"
                                 onChange={(e) => setrpass(e.target.value)} />
                             </td>
@@ -155,12 +162,14 @@ const MyProfile = () => {
                             {/* <td><img src={require(`./upload/${userlist.image}`).default} style={mystyle}></img></td> */}
                         </tr>
                         <tr>
-                            <td><button onClick={update}>Update</button></td>
+                            <td><Button onClick={update}>Update</Button></td>
                             <Back></Back>
                         </tr>
                     </table>
                     {error}
                 </fieldset>
+                <br></br>
+                <br></br>
                 <fieldset>
                     <label>Change Profile Picture</label>
                     {/* <img src={require(`./upload/${userlist.image}`).default} style={mystyle}></img> */}
@@ -168,7 +177,7 @@ const MyProfile = () => {
                         name="image"
                         onChange={(e) => setImage(e.target.files[0])}
                     />
-                    <button onClick={() => Change(userlist.id)}>Change Profile Picture </button>
+                    <Button variant="outline-warning" onClick={() => Change(userlist.id)}>Change Profile Picture </Button>
                 </fieldset>
             </div>
         </div>

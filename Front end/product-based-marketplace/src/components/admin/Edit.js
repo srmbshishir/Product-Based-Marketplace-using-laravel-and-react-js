@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useParams } from "react-router";
 import Back from './Back';
 import validator from 'validator';
+import Button from 'react-bootstrap/esm/Button';
 
 const Edit = () => {
     const [name, setName] = useState("");
@@ -112,7 +113,7 @@ const Edit = () => {
                             </td>
                         </tr>
                         <tr>
-                            <td><button onClick={update}>Update</button></td>
+                            <td><Button onClick={update}>Update</Button></td>
                             <Back></Back>
                         </tr>
                     </table>
