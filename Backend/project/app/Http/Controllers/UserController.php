@@ -86,7 +86,7 @@ class UserController extends Controller
     public function profile($id){
        // return view('Seller.profile');
         $user = User::find($id);
-        return view('Seller.profile')->with('user', $user);
+        return $user;
     }
     
     public function profileupdate(ProRequest $req, $id)
@@ -99,7 +99,7 @@ class UserController extends Controller
         $user->password = $req->password;
 
         $user->save();
-        return view('Seller.profile')->with('user',$user);
+        return json_encode("profile updated");
     }
     public function profileimage(Request $req,$id){
         $user= User::find($id);
@@ -113,15 +113,15 @@ class UserController extends Controller
             $user->save();
 
             if($file->move('upload', $file->getClientOriginalName())){
-                echo "success";
+                return json_encode("image updated");
             }else{
-                echo "error..";
+                return json_encode("error");
             }
 
         }else{
-            echo "file not found!";
+            return json_encode("file not found");
         }
-        return view('Seller.profile')->with('user',$user);
+        return json_encode("please upload a file first");
     }
     public function adduser(){
         return view('Admin.add');

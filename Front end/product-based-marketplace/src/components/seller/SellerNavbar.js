@@ -21,9 +21,9 @@ const SellerNavbar = () => {
                     <Nav className="me-auto">
                         <Nav.Link><Link style={mystyle} to="/seller/addproduct">Add Product</Link></Nav.Link>
                         <Nav.Link><Link style={mystyle} to="/seller/showproduct">Show Products</Link></Nav.Link>
-                        <Nav.Link><Link style={mystyle} to="/admin/showuser">Show User</Link> </Nav.Link>
-                        <Nav.Link><Link style={mystyle} to={`/admin/myprofile/${eid}`}>My Profile</Link></Nav.Link>
-                        <Nav.Link><Link style={mystyle} to="/admin/dashboard">Dashbaord</Link> </Nav.Link>
+                        <Nav.Link><Link style={mystyle} to="/seller/showorder">Show Order</Link> </Nav.Link>
+                        <Nav.Link><Link style={mystyle} to={`/seller/myprofile/${eid}`}>My Profile</Link></Nav.Link>
+                        <Nav.Link><Link style={mystyle} to="/seller/dashboard">Dashbaord</Link> </Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
