@@ -5,7 +5,7 @@ import { useParams } from "react-router";
 import Back from './Back';
 import validator from 'validator';
 import Button from 'react-bootstrap/esm/Button';
-// import './upload/abc.jpg';
+
 
 
 const MyProfile = () => {
@@ -20,7 +20,7 @@ const MyProfile = () => {
 
     const { id: eid } = useParams();
 
-    const url = `http://127.0.0.1:8000/api/admin/${eid}/edit`;
+    const url = `http://127.0.0.1:8000/api/seller/profile/${eid}`;
     const [userlist, setUserList] = useState([]);
     useFetch(url, setUserList);
 
@@ -51,7 +51,7 @@ const MyProfile = () => {
         }
         else {
             console.log('bosos');
-            let result = await fetch(`http://127.0.0.1:8000/api/admin/profile/${eid}`, {
+            let result = await fetch(`http://127.0.0.1:8000/api/seller/profile/${eid}`, {
                 method: 'POST',
                 body: formData
             });
@@ -76,7 +76,7 @@ const MyProfile = () => {
         const formData = new FormData();
         formData.append('image', image);
 
-        let result = await fetch(`http://127.0.0.1:8000/api/admin/pic/${id}`, {
+        let result = await fetch(`http://127.0.0.1:8000/api/seller/pic/${id}`, {
             method: 'POST',
             // headers: {
             //     "Content-Type": "application/json",
@@ -158,9 +158,11 @@ const MyProfile = () => {
                                 onChange={(e) => setrpass(e.target.value)} />
                             </td>
                         </tr>
-                        <tr>
-                            {/* <td><img src={require(`./upload/${userlist.image}`).default} style={mystyle}></img></td> */}
-                        </tr>
+                        {/* <tr>
+                            <td><img src={`../upload/${userlist.image}`} style={mystyle}></img></td>
+                            <img src="../upload/abc.jpg"></img>
+                            {userlist.image}
+                        </tr> */}
                         <tr>
                             <td><Button onClick={update}>Update</Button></td>
                             <Back></Back>
@@ -171,9 +173,11 @@ const MyProfile = () => {
                 <br></br>
                 <br></br>
                 <fieldset>
+                    <label>Image Name : {userlist.image}</label>
+                    <br></br>
                     <label>Change Profile Picture</label>
                     {/* <img src={require(`./upload/${userlist.image}`).default} style={mystyle}></img> */}
-                    {/* <img src="./upload/abc.jpg"></img> */}
+
                     <input type="file"
                         name="image"
                         onChange={(e) => setImage(e.target.files[0])}

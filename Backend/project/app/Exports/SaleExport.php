@@ -39,8 +39,9 @@ class SaleExport implements FromQuery,WithHeadings
         //return Order::where('track','!=','delivered');
        // $order =new Order();
         //$orders = $order->where('sellerid',session('id'));
-        return Order::query()->where('sellerid',session('id'))->where('track','delivered')->orderBy('date','desc');
+        return Order::query()->where('track','delivered')->orderBy('date','desc');
        // return 
+    //    return Order::all()->get();
 
     }
 }
