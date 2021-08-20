@@ -61,3 +61,4 @@ Route::get('/seller/export', 'OrderController@export');
 //Buyer
 Route::get('/buyer/showProduct/{id}', 'ProductController@show');
 Route::get('/buyer/showProduct/search/{id}/{key}', 'ProductController@search');
+Route::get('/welcome/all', 'ProductController@welcomeshow');
