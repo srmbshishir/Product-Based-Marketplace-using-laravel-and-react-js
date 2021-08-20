@@ -19,7 +19,7 @@ const HomeNavbar = () => {
                     <Nav className="me-auto">
                         <Nav.Link><Link style={mystyle} to="/">Home</Link></Nav.Link>
                         <Nav.Link><Link style={mystyle} to="/login">Login</Link></Nav.Link>
-
+                        <Nav.Link><Link style={mystyle} to="/register">Register</Link></Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

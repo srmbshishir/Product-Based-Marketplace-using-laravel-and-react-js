@@ -38,6 +38,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            Cors::class,
+            HttpsProtocol::class
         ],
 
         'api' => [
@@ -67,6 +69,6 @@ class Kernel extends HttpKernel
         'seller'=>  \App\Http\Middleware\SellerCheck::class,
         'buyer'=>  \App\Http\Middleware\BuyerCheck::class,
         'admin'=>  \App\Http\Middleware\AdminCheck::class,
-        'cors' => \App\Http\Middleware\Cors::class
+        'cors' => Cors::class
     ];
 }

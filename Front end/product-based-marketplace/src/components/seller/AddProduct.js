@@ -143,7 +143,7 @@ function AddUser() {
                         <br></br>
                         <br></br>
                         <tr>
-                            <td><Button variant="outline-success" onClick={add}>Add User</Button>
+                            <td><Button variant="outline-success" onClick={add}>Add Product</Button>
                             </td>
                             <Back></Back>
                         </tr>

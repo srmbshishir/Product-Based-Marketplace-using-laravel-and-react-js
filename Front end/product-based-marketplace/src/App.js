@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import HomeNavbar from './components/navbar';
 import Login from './components/login';
+import Register from './components/Register/Register';
 
 import Admin from './components/admin';
 import AddUser from './components/admin/AddUser';
@@ -12,6 +13,9 @@ import ShowUser from './components/admin/ShowUser';
 import Edit from './components/admin/Edit';
 
 import Buyer from './components/buyer';
+//import BuyerProfile from './components/buyer/BuyerProfile';
+import BuyerDashboard from './components/buyer/BuyerDashboard';
+import Product from './components/buyer/ShowProduct';
 import Seller from './components/seller';
 import Store from './components/StoreUser';
 import { ProtectedRoute } from './components/ProtectedRoute';
@@ -39,7 +43,7 @@ function App() {
 
                     <Route exact path='/'>
                         <HomeNavbar></HomeNavbar>
-                        <h1>Welcome Home!</h1>
+                        <h1>Welcome to our APWT E-commerce Website!</h1>
                     </Route>
                     <Route exact path='/login'>
                         <Login></Login>
@@ -57,6 +61,9 @@ function App() {
 
 
                     <ProtectedRoute exact path='/buyer/index/:id' component={Buyer} />
+                    {/* <ProtectedRoute exact path='/buyer/myprofile/:id' component={BuyerProfile} />*/}
+                    <ProtectedRoute exact path='/buyer/dashboard' component={BuyerDashboard} />
+                    <ProtectedRoute exact path='/buyer/showProduct' component={Product} />
                     {/* <Route exact path='/buyer/index/:id'> 
                     <Buyer></Buyer>
                 </Route>  */}
