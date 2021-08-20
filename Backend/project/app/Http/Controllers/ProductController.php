@@ -152,9 +152,9 @@ class ProductController extends Controller
     public function welcomeshow(Request $req){
 
         $product =new Product();
-        $products = $product->where('status','accepted')->paginate(8);
+        $products = $product->where('status','accepted')->get();
 
-        return view('welcome',['product'=> $products]);
+        return $products;
       
     }
 }

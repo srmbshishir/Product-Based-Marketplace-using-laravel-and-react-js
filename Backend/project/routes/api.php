@@ -57,3 +57,5 @@ Route::post('/seller/profile/{id}', 'UserController@profileupdate');
 Route::post('/seller/pic/{id}', 'UserController@profileimage');
 Route::get('/seller/dashboard/{id}', 'OrderController@dashboard');
 Route::get('/seller/export', 'OrderController@export');
+
+Route::get('/welcome/all', 'ProductController@welcomeshow');

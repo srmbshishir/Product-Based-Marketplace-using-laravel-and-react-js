@@ -27,6 +27,9 @@ import ShowOrder from './components/seller/ShowOrder';
 import MyProfile from './components/admin/MyProfile';
 import SellerProfile from './components/seller/SellerProfile';
 import SellerDashboard from './components/seller/SellerDashboard';
+import registration from './components/registration';
+import Registration from './components/registration';
+import Home from './components/Home';
 
 function App() {
     const { user, type } = React.useContext(Context);
@@ -39,10 +42,14 @@ function App() {
 
                     <Route exact path='/'>
                         <HomeNavbar></HomeNavbar>
-                        <h1>Welcome Home!</h1>
+                        <h1>Welcome!</h1>
+                        <Home></Home>
                     </Route>
                     <Route exact path='/login'>
                         <Login></Login>
+                    </Route>
+                    <Route exact path='/registration'>
+                        <Registration></Registration>
                     </Route>
 
                     <ProtectedRoute exact path='/admin/index/:id' component={Admin} />
