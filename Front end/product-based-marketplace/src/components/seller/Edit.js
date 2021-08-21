@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useParams } from "react-router";
 import Back from './Back';
 import Button from 'react-bootstrap/esm/Button';
+import { useHistory } from 'react-router';
 
 const EditSeller = () => {
     const [name, setName] = useState("");
@@ -15,6 +16,7 @@ const EditSeller = () => {
     const [description, setDescription] = useState("");
     const [image, setImage] = useState("");
     const [error, setError] = useState("");
+    const history = useHistory();
 
     const { id: eid } = useParams();
     console.log(eid);
@@ -51,6 +53,7 @@ const EditSeller = () => {
             const message = localStorage.getItem('user-info')
             JSON.parse(message);
             alert(message);
+            history.push(`/seller/showProduct`);
         }
     }
 

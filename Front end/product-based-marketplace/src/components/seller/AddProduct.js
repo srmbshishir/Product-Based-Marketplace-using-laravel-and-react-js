@@ -4,10 +4,12 @@ import Back from './Back';
 import validator from 'validator'
 import Button from 'react-bootstrap/esm/Button';
 import { Context } from '../StoreUser';
+import { useHistory } from 'react-router';
 
 function AddUser() {
     const { user, type } = React.useContext(Context);
     const [userValue, setUserValue] = user;
+    const history = useHistory();
 
     const [name, setName] = useState("");
     const [condition, setCondition] = useState("");
@@ -52,6 +54,7 @@ function AddUser() {
             const message = localStorage.getItem('user-info')
             JSON.parse(message);
             alert(message);
+            history.push(`/seller/showProduct`);
         }
     }
 

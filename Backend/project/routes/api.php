@@ -59,3 +59,4 @@ Route::get('/seller/dashboard/{id}', 'OrderController@dashboard');
 Route::get('/seller/export', 'OrderController@export');
 
 Route::get('/welcome/all', 'ProductController@welcomeshow');
+Route::get('/welcome/search/{key}', 'ProductController@welcomesearch');

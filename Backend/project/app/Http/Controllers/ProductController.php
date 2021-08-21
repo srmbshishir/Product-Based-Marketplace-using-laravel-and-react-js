@@ -22,14 +22,14 @@ class ProductController extends Controller
         $count = Product::orderBy('id',"desc")->first();
 
         if($count){
-            $id = intval(substr($count->id,2,8))+1;
-            $id = "PR".strval($id);
+            $pid = intval(substr($count->id,2,8))+1;
+            $pid = "PR".strval($id);
         }   
         else{
-            $id = "PR1000";
+            $pid = "PR1000";
         }
 
-        $product->id                = $id;
+        $product->id                = $pid;
         $product->name              = $req->name; 
         $product->price             = $req->price; 
         $product->p_condition       = $req->condition; 
@@ -141,13 +141,13 @@ class ProductController extends Controller
     {
         return Product::where('id','like',"%$key%")->orwhere('category','like',"%$key%")->get();
     }
-    public function welcomesearch(Request $req)
+    public function welcomesearch($key)
     {
         $product =new Product();
-        $products = $product->where('name','like','%'.$req->search.'%')->where('status','accepted')->orwhere('category','like','%'.$req->search.'%')->where('status','accepted')->paginate(6);
+        $products = $product->where('name','like','%'.$key.'%')->where('status','accepted')->orwhere('category','like','%'.$key.'%')->where('status','accepted')->get();
         //SELECT * FROM `product` WHERE id like 'elec%' or category like 'elec%'
         //dd($req->all());
-        return view('welcome',['product'=> $products]);
+        return $products;
     }
     public function welcomeshow(Request $req){
 

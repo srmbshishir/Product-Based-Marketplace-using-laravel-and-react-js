@@ -5,11 +5,13 @@ import Back from './Back';
 import Button from 'react-bootstrap/esm/Button';
 import Table from 'react-bootstrap/Table';
 import { Context } from '../StoreUser';
-import ReactToExcel from 'react-html-table-to-excel'
+import ReactToExcel from 'react-html-table-to-excel';
+import { useHistory } from 'react-router';
 
 const ShowOrder = () => {
     const { user, type } = React.useContext(Context);
     const [userValue, setUserValue] = user;
+    const history = useHistory();
 
     const url = `http://127.0.0.1:8000/api/seller/showOrderList/${user[0].id}`;
     const [orderlist, setOrderList] = useState([]);
@@ -65,7 +67,7 @@ const ShowOrder = () => {
         <div>
             <Back></Back>
             <input type="text"
-                placeholder="Type user id/type"
+                placeholder="Type order id/type"
                 name="search"
                 onChange={(e) => setKey(e.target.value)}
             />

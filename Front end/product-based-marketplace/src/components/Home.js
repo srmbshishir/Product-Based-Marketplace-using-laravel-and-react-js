@@ -17,7 +17,7 @@ const Home = () => {
     //search work
     const [key, setKey] = useState("");
     async function Search() {
-        let result = await fetch(`http://127.0.0.1:8000/api/seller/showProduct/search/${user[0].id}/` + key)
+        let result = await fetch(`http://127.0.0.1:8000/api/welcome/search/` + key)
         result = await result.json();
         console.log(result);
         setProductList(result);
@@ -25,7 +25,7 @@ const Home = () => {
 
     //show all
     async function ShowAll() {
-        let result = await fetch(`http://127.0.0.1:8000/api/seller/showProduct/${user[0].id}`)
+        let result = await fetch(`http://127.0.0.1:8000/api/welcome/all`)
         result = await result.json();
         setProductList(result);
     }

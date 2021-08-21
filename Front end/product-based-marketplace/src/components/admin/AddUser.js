@@ -3,6 +3,7 @@ import { useState } from "react";
 import Back from './Back';
 import validator from 'validator'
 import Button from 'react-bootstrap/esm/Button';
+import { useHistory } from 'react-router';
 
 function AddUser() {
     const [name, setName] = useState("");
@@ -14,6 +15,7 @@ function AddUser() {
     const [password, setPassword] = useState("");
     const [rpass, setrpass] = useState("");
     const [error, setError] = useState();
+    const history = useHistory();
 
 
     async function add() {
@@ -58,6 +60,7 @@ function AddUser() {
             const message = localStorage.getItem('user-info')
             JSON.parse(message);
             alert(message);
+            history.push(`/admin/showUser`);
         }
     }
 

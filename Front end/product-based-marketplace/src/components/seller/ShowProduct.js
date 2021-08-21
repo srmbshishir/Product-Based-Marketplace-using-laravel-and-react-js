@@ -49,7 +49,7 @@ const ShowProduct = () => {
             <Button variant="outline-dark" onClick={Search}>Search</Button>
             <br></br>
             <Button onClick={ShowAll}>Show All</Button>
-            <h1>Show User Page</h1>
+            <h1>Show Products</h1>
             <table striped bordered hover>
                 <tr>
                     <td>Id</td>
